@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F3 Contest 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="menu">
+        <div><a href="#"><span class="logo">Teacher Portal</span></a></div>
+        <div class="menu-item">
+            <a href="index.html"><span>SignUp</span></a>
+            <a href="login.html"><span>LogIn</span></a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <form id="signup" class="form">
+            <h1>Teacher Signup</h1>
+            <div class="form-field">
+                <label for="username">Name</label>
+                <input type="text" name="username" id="username" autocomplete="off" placeholder="Enter Name">
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <label for="Email">Email</label>
+                <input type="text" name="email" id="email" autocomplete="off" placeholder="Enter your email">
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" autocomplete="off"
+                    placeholder="Enter a password">
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <label for="username">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" autocomplete="off"
+                    placeholder="Reenter your password">
+                <small></small>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Sign Up" class="btn">
+            </div>
+            <div class="show">
+                <p class="msg"></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

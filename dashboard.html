@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="menu">
+        <div><a href="#"><span class="logo">Teacher Portal</span></a></div>
+        <div class="menu-item">
+            <a href="index.html"><span>SignUp</span></a>
+            <a href="login.html"><span>LogIn</span></a>
+        </div>
+    </nav>
+    <div class="container">
+        <form id="signup" class="form">
+            <h1>Teacher Dashboard</h1>
+            Welcome back : <input type="text" id="nm" readonly><br><br>
+            Your Email ID : <input type="text" id="em" readonly><br><br>
+            <h1>Change Password</h1>
+            <div class="form-field">
+                <label for="password">Old Password</label>
+                <input type="password" name="password" id="password" autocomplete="off"
+                    placeholder="Old password">
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <label for="username">New Password</label>
+                <input type="password" name="confirm-password" id="new-password" autocomplete="off"
+                    placeholder="New password">
+                <small></small>
+            </div>
+            <div class="form-field">
+                <label for="username">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" autocomplete="off"
+                    placeholder="Confirm password">
+                <small></small>
+            </div>
+            <div class="show">
+                <p class="msg"></p>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Change" class="btn-change">
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Logout" class="btn-logout">
+            </div>
+        </form>
+    </div>
+
+
+        
+    <script>
+        //dashboard page
+        const dash_nm = document.querySelector('#nm');
+        const dash_em = document.querySelector('#em');
+        const dash_email = document.querySelector('#email');
+        const dash_psd = document.querySelector('#password');
+        const dash_newpsd = document.querySelector('#new-password');
+        const dash_conpsd = document.querySelector('#confirm-password');
+
+        const change = document.querySelector('.btn-change');
+        const logout = document.querySelector('.btn-logout');
+
+        //data get from localstorage
+        let dash_show = JSON.parse(localStorage.getItem("Data"));
+        console.log(dash_show,"Hello");
+        const load = () =>{
+            dash_nm.value = dash_show[0].Name;
+            dash_em.value = dash_show[0].Email;
+            console.log(dash_nm.value)
+        };
+        load();
+       
+        change.addEventListener('click',(e)=>{
+            let dash_show = JSON.parse(localStorage.getItem("Data"));
+            e.preventDefault();
+            for(let data =0;data<dash_show.length;data++){
+                if(dash_show[data].Password === dash_psd.value){
+                    if(dash_newpsd.value === dash_conpsd.value){
+                        alert("Password Change Successfull.....");
+                        dash_show[0].Password = dash_psd.value;
+                        localStorage.setItem('Data',JSON.stringify(dash_show));
+                    }
+                    else{
+                        alert("New Password and Confirm Password are not match.....");
+                    }
+                }
+                else{
+                    alert("Old Password is not match.....\nPlease Correct Old Password....");
+                }
+                console.log(dash_show[data].Password);
+                console.log(dash_psd.value);
+                console.log(dash_conpsd.value);
+            }
+            
+        });
+        //logout 
+        logout.addEventListener('click',(e)=>{
+            e.preventDefault();
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
