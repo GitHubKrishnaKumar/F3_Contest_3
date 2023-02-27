@@ -130,10 +130,10 @@ form.addEventListener('submit', function (e) {
         isConfirmPasswordValid = checkConfirmPassword();
 
     let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
-    console.log(isFormValid,"fgxgxdfdsfsdfsdfsdfdsdssdfs233fdgxdf");
+    // console.log(isFormValid);
     // submit to the server if the form is valid
     if(isFormValid) {
-        console.log(isFormValid,"fgxgxfdgxdf");
+        // console.log(isFormValid,"fgxgxfdgxdf");
         window.location.href = "login.html";
     }
     else{

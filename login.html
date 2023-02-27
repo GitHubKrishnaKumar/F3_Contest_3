@@ -54,11 +54,13 @@
             for(let data of show){
                 if(email.value === data.Email && psd.value === data.Password){
                     // alert("Done");
+                    token();
                     window.location.href = "dashboard.html";
                     console.log(data.Email);
                     console.log(data.Password);
                 }
                 else{
+
                     alert("Email id and Password are wrong...");
                     console.log(data.Email);
                     console.log(data.Password);
@@ -66,6 +68,20 @@
             }
         });
 
+        function token(){
+            let capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let small = "abcdefghijklmnopqrstuvwxyz";
+            let num = "0123456789";
+            let total = capital + small + num;
+
+            let res = "";
+            for(let a=0;a<16;a++){
+                let random  = Math.floor(Math.random()* total.length);
+                res += total[random];
+            }
+            alert(res);
+            console.log(res);
+        }
 
 
 

@@ -68,9 +68,10 @@
 
         //data get from localstorage
         let dash_show = JSON.parse(localStorage.getItem("Data"));
-        console.log(dash_show,"Hello");
+        console.log("Local Storage Data >>>> \n",dash_show);
         const load = () =>{
             dash_nm.value = dash_show[0].Name;
+            // dash_nm.value = dash_show.filter((data)=>{ return data === dash_show.Name});
             dash_em.value = dash_show[0].Email;
             console.log(dash_nm.value)
         };
@@ -78,24 +79,29 @@
        
         change.addEventListener('click',(e)=>{
             let dash_show = JSON.parse(localStorage.getItem("Data"));
+            console.log(dash_show);
             e.preventDefault();
+            
             for(let data =0;data<dash_show.length;data++){
-                if(dash_show[data].Password === dash_psd.value){
-                    if(dash_newpsd.value === dash_conpsd.value){
-                        alert("Password Change Successfull.....");
-                        dash_show[0].Password = dash_psd.value;
-                        localStorage.setItem('Data',JSON.stringify(dash_show));
+                // if(dash_email.value === dash_show[data].Email){
+                    if(dash_show[data].Password === dash_psd.value){
+                        if(dash_newpsd.value === dash_conpsd.value){
+                            alert("Password Change Successfull.....");
+                            console.log("local",dash_show[data].Password);
+                            dash_show[data].Password = dash_newpsd.value;
+                            console.log("new Data",dash_newpsd.value);
+                            
+                            localStorage.setItem('Data',JSON.stringify(dash_show));
+                            console.log("update data",dash_show);
+                        }
+                        else{
+                            alert("New Password and Confirm Password are not match.....");
+                        }
                     }
                     else{
-                        alert("New Password and Confirm Password are not match.....");
+                        alert("Old Password is not match.....\nPlease Correct Old Password....");
                     }
-                }
-                else{
-                    alert("Old Password is not match.....\nPlease Correct Old Password....");
-                }
-                console.log(dash_show[data].Password);
-                console.log(dash_psd.value);
-                console.log(dash_conpsd.value);
+                // }
             }
             
         });
